@@ -2,14 +2,20 @@ import React from "react";
 import { Button, Table } from "react-bootstrap";
 import _ from "lodash";
 import FlattenObject from "../util/FlattenObject";
+import { Link } from "react-router-dom";
 
-export default function DataTable({ data, tableColumns, dataFields }) {
+export default function DataTable({
+  data,
+  tableColumns,
+  dataFields,
+  type = "product",
+}) {
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
           {tableColumns.map((i, idx) => (
-            <th key={idx}>{i}</th>
+            <th>{i}</th>
           ))}
           <th>Edit</th>
         </tr>
@@ -25,7 +31,12 @@ export default function DataTable({ data, tableColumns, dataFields }) {
               ))}
               <td>
                 <Button size="sm" variant="outline-secondary">
-                  Edit
+                  <Link
+                    style={{ color: "inherit", textDecoration: "none" }}
+                    to={`/${type}/${i.id}`}
+                  >
+                    Edit
+                  </Link>
                 </Button>
               </td>
             </tr>

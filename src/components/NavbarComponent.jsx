@@ -7,7 +7,12 @@ export default function NavbarComponent({ user, handleLogout, loggedIn }) {
     <Navbar bg="dark" variant="dark" className="mb-3">
       <Container>
         <Navbar.Brand>
-          <b>FarmEazy</b> Admin Portal
+          <NavLink
+            to={loggedIn ? "/dashboard" : "/"}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <b>FarmEazy</b> Admin Portal
+          </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
@@ -17,6 +22,7 @@ export default function NavbarComponent({ user, handleLogout, loggedIn }) {
                 Signed in as:{" "}
                 {user && <b style={{ color: "white" }}>{user.firstname}</b>}
               </Navbar.Text>
+              &emsp;
               <Nav.Link onClick={handleLogout}>Sign Out</Nav.Link>
             </Nav>
           ) : (

@@ -4,6 +4,10 @@ import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import NavbarComponent from "./components/NavbarComponent";
 import axios from "axios";
+import Product from "./Pages/Product";
+import ProductEdit from "./Pages/ProductEdit";
+import Order from "./Pages/Order";
+import OrderEdit from "./Pages/OrderEdit";
 
 function App() {
   const [user, setUser] = useState();
@@ -37,8 +41,18 @@ function App() {
         handleLogout={handleLogout}
         loggedIn={loggedIn}
       />
-      <div className="container">
+      <div className="container my-4">
         <Routes>
+          <Route path="/order">
+            <Route path=":id" element={<Order />} />
+            <Route path="edit/:id" element={<OrderEdit />} />
+          </Route>
+
+          <Route path="/product">
+            <Route path=":id" element={<Product />} />
+            <Route path="edit/:id" element={<ProductEdit />} />
+          </Route>
+
           <Route
             path="/dashboard"
             element={<Home user={user} loggedIn={loggedIn} />}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import axios from "axios";
-import { Card } from "react-bootstrap";
 import DataTable from "../components/DataTable";
 import DetailCard from "../components/DetailCard";
+import { Button } from "react-bootstrap";
 
 export default function Home({ user, loggedIn }) {
   const [users, setUsers] = useState();
@@ -15,9 +15,9 @@ export default function Home({ user, loggedIn }) {
     "Name",
     "Listed By",
     "Type",
-    "Price",
-    "Min Qty",
-    "Avl Qty",
+    "Price (in ₹)",
+    "Min Qty (KG(s))",
+    "Avl Qty (KG(s))",
   ];
 
   let ProductDataFields = [
@@ -33,8 +33,8 @@ export default function Home({ user, loggedIn }) {
     "#",
     "Product Name",
     "Buyer Name",
-    "Buying Price",
-    "Qty",
+    "Buying Price (in ₹)",
+    "Qty (KG(s))",
     "Fullfilled?",
   ];
 
@@ -62,7 +62,7 @@ export default function Home({ user, loggedIn }) {
   return (
     user && (
       <div>
-        <h4 className="my-4">Welcome, {user.firstname}!</h4>
+        <h4>Welcome, {user.firstname}!</h4>
         <div className="mt-3">
           <p className="my-4">Details at a glance:</p>
           {!users && !products && !orders ? (
@@ -90,7 +90,12 @@ export default function Home({ user, loggedIn }) {
             "loading..."
           ) : (
             <div className="my-5">
-              <h4>Recently listed products:</h4>
+              <div className="d-flex justify-content-between mb-2">
+                <h4>Recently listed products:</h4>
+                <Button size="sm" variant="outline-primary">
+                  List New Product
+                </Button>
+              </div>
               <DataTable
                 tableColumns={ProductDataTableColumns}
                 data={products}
@@ -102,11 +107,17 @@ export default function Home({ user, loggedIn }) {
             "loading..."
           ) : (
             <div className="my-5">
-              <h4>Recently listed orders:</h4>
+              <div className="d-flex justify-content-between mb-2">
+                <h4>Recently listed orders:</h4>
+                <Button size="sm" variant="outline-primary">
+                  Add New Order
+                </Button>
+              </div>
               <DataTable
                 tableColumns={OrderDataTableColumns}
                 data={orders}
                 dataFields={OrderDataFields}
+                type="order"
               />
             </div>
           )}
