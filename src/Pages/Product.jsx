@@ -16,7 +16,6 @@ export default function Product() {
     productsReq
       .then((res) => {
         setProduct(res.data.product[0]);
-        console.log(product);
       })
       .catch((err) => {
         console.log(err);

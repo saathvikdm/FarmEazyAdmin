@@ -16,7 +16,6 @@ export default function Order() {
     ordersReq
       .then((res) => {
         setOrder(res.data.order[0]);
-        console.log(order);
       })
       .catch((err) => {
         console.log(err);

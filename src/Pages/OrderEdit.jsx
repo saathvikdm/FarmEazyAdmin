@@ -16,7 +16,6 @@ export default function OrderEdit() {
     orderReq
       .then((res) => {
         setOrder(res.data.order[0]);
-        console.log(order);
       })
       .catch((err) => {
         console.log(err);
@@ -95,7 +94,7 @@ export default function OrderEdit() {
         <div className="w-50">
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Purchase Quantity</Form.Label>
+              <Form.Label>Purchase Quantity in KG(s)</Form.Label>
               <Form.Control
                 name="qty"
                 value={order.qty}
