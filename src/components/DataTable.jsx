@@ -17,15 +17,16 @@ export default function DataTable({ data, tableColumns, dataFields }) {
       <tbody>
         {data.map((i, idx) => {
           let dataFieldSubset = _.pick(FlattenObject(i), dataFields);
-          console.log(Object.values(dataFieldSubset));
           return (
             <tr>
               <td>{idx + 1}</td>
               {Object.keys(dataFieldSubset).map((k, i) => (
-                <td>{dataFieldSubset[k]}</td>
+                <td>{String(dataFieldSubset[k])}</td>
               ))}
               <td>
-                <Button>Edit</Button>
+                <Button size="sm" variant="outline-secondary">
+                  Edit
+                </Button>
               </td>
             </tr>
           );

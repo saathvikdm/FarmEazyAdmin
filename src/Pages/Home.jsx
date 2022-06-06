@@ -1,5 +1,6 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import _ from "lodash";
+import axios from "axios";
 import { Card } from "react-bootstrap";
 import DataTable from "../components/DataTable";
 import DetailCard from "../components/DetailCard";
@@ -12,21 +13,32 @@ export default function Home({ user, loggedIn }) {
   let ProductDataTableColumns = [
     "#",
     "Name",
+    "Listed By",
     "Type",
     "Price",
     "Min Qty",
     "Avl Qty",
-    "Created At",
   ];
 
   let ProductDataFields = [
+    "name",
     "firstname",
     "type",
     "price",
     "min_qty",
     "avl_qty",
-    "createdAt",
   ];
+
+  let OrderDataTableColumns = [
+    "#",
+    "Product Name",
+    "Buyer Name",
+    "Buying Price",
+    "Qty",
+    "Fullfilled?",
+  ];
+
+  let OrderDataFields = ["name", "firstname", "price", "qty", "fullfilled"];
 
   useEffect(() => {
     const usersReq = axios.get("users");
@@ -83,6 +95,18 @@ export default function Home({ user, loggedIn }) {
                 tableColumns={ProductDataTableColumns}
                 data={products}
                 dataFields={ProductDataFields}
+              />
+            </div>
+          )}
+          {!orders ? (
+            "loading..."
+          ) : (
+            <div className="my-5">
+              <h4>Recently listed orders:</h4>
+              <DataTable
+                tableColumns={OrderDataTableColumns}
+                data={orders}
+                dataFields={OrderDataFields}
               />
             </div>
           )}
