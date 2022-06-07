@@ -80,6 +80,12 @@ export default function Order() {
             Seller ID: <b>{order.Product.UserId}</b>
           </p>
           <p>
+            Seller Name:{" "}
+            <b>
+              {order.Product.User.sellerfname} {order.Product.User.sellerlname}
+            </b>
+          </p>
+          <p>
             Buyer Name:{" "}
             <b>
               {order.User.firstname} {order.User.lastname}

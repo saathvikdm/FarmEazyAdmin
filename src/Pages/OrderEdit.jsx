@@ -74,6 +74,12 @@ export default function OrderEdit() {
                 <br />
                 Seller ID: <b>{order.Product.UserId}</b>
                 <br />
+                Seller Name:{" "}
+                <b>
+                  {order.Product.User.sellerfname}{" "}
+                  {order.Product.User.sellerlname}
+                </b>
+                <br />
                 Price/KG: <b>₹{order.Product.price}</b>
                 <br />
                 Minimum Purchase Quantity: <b>{order.Product.min_qty} KG(s)</b>
@@ -98,9 +104,10 @@ export default function OrderEdit() {
               <Form.Control
                 name="qty"
                 value={order.qty}
+                min={order.qty}
                 onChange={handleInputChange}
                 type="number"
-                placeholder="Enter product name"
+                placeholder="Enter purchase Quantity in KG(s)"
               />
             </Form.Group>
             <Form.Group className="mb-3">

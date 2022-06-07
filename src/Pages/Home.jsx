@@ -32,13 +32,21 @@ export default function Home({ user, loggedIn }) {
   let OrderDataTableColumns = [
     "#",
     "Product Name",
+    "Seller Name",
     "Buyer Name",
     "Buying Price (in ₹)",
     "Qty (KG(s))",
     "Fullfilled?",
   ];
 
-  let OrderDataFields = ["name", "firstname", "price", "qty", "fullfilled"];
+  let OrderDataFields = [
+    "name",
+    "sellerfname",
+    "firstname",
+    "price",
+    "qty",
+    "fullfilled",
+  ];
 
   useEffect(() => {
     const usersReq = axios.get("users");
@@ -59,70 +67,70 @@ export default function Home({ user, loggedIn }) {
       });
   }, []);
 
-  return (
-    user && (
-      <div>
-        <h4>Welcome, {user.firstname}!</h4>
-        <div className="mt-3">
-          <p className="my-4">Details at a glance:</p>
-          {!users && !products && !orders ? (
-            "loading..."
-          ) : (
-            <div className="d-flex flex-column flex-md-row align-items-center align-items-md-start">
-              <DetailCard
-                title="No. of Users"
-                count={users.length}
-                time={users.at(-1)}
-              />
-              <DetailCard
-                title="No. of Listed Products"
-                count={products.length}
-                time={products.at(-1)}
-              />
-              <DetailCard
-                title="No. of Orders"
-                count={orders.length}
-                time={orders.at(-1)}
-              />
+  return !user ? (
+    "loading..."
+  ) : (
+    <div>
+      <h4>Welcome, {user.firstname}!</h4>
+      <div className="mt-3">
+        <p className="my-4">Details at a glance:</p>
+        {!users && !products && !orders ? (
+          "loading..."
+        ) : (
+          <div className="d-flex flex-column flex-md-row align-items-center align-items-md-start">
+            <DetailCard
+              title="No. of Users"
+              count={users.length}
+              time={users.at(-1)}
+            />
+            <DetailCard
+              title="No. of Listed Products"
+              count={products.length}
+              time={products.at(-1)}
+            />
+            <DetailCard
+              title="No. of Orders"
+              count={orders.length}
+              time={orders.at(-1)}
+            />
+          </div>
+        )}
+        {!products ? (
+          "loading..."
+        ) : (
+          <div className="my-5">
+            <div className="d-flex justify-content-between mb-2">
+              <h4>Recently listed products:</h4>
+              <Button size="sm" variant="outline-primary">
+                List New Product
+              </Button>
             </div>
-          )}
-          {!products ? (
-            "loading..."
-          ) : (
-            <div className="my-5">
-              <div className="d-flex justify-content-between mb-2">
-                <h4>Recently listed products:</h4>
-                <Button size="sm" variant="outline-primary">
-                  List New Product
-                </Button>
-              </div>
-              <DataTable
-                tableColumns={ProductDataTableColumns}
-                data={products}
-                dataFields={ProductDataFields}
-              />
+            <DataTable
+              tableColumns={ProductDataTableColumns}
+              data={products}
+              dataFields={ProductDataFields}
+            />
+          </div>
+        )}
+        {!orders ? (
+          "loading..."
+        ) : (
+          <div className="my-5">
+            <div className="d-flex justify-content-between mb-2">
+              <h4>Recently listed orders:</h4>
+              <Button size="sm" variant="outline-primary">
+                Add New Order
+              </Button>
             </div>
-          )}
-          {!orders ? (
-            "loading..."
-          ) : (
-            <div className="my-5">
-              <div className="d-flex justify-content-between mb-2">
-                <h4>Recently listed orders:</h4>
-                <Button size="sm" variant="outline-primary">
-                  Add New Order
-                </Button>
-              </div>
-              <DataTable
-                tableColumns={OrderDataTableColumns}
-                data={orders}
-                dataFields={OrderDataFields}
-                type="order"
-              />
-            </div>
-          )}
-        </div>
+            <DataTable
+              tableColumns={OrderDataTableColumns}
+              data={orders}
+              dataFields={OrderDataFields}
+              type="order"
+            />
+          </div>
+        )}
       </div>
-    )
+    </div>
   );
 }

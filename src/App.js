@@ -43,20 +43,24 @@ function App() {
       />
       <div className="container my-4">
         <Routes>
-          <Route path="/order">
-            <Route path=":id" element={<Order />} />
-            <Route path="edit/:id" element={<OrderEdit />} />
-          </Route>
+          {loggedIn && (
+            <>
+              <Route path="/order">
+                <Route path=":id" element={<Order />} />
+                <Route path="edit/:id" element={<OrderEdit />} />
+              </Route>
 
-          <Route path="/product">
-            <Route path=":id" element={<Product />} />
-            <Route path="edit/:id" element={<ProductEdit />} />
-          </Route>
+              <Route path="/product">
+                <Route path=":id" element={<Product />} />
+                <Route path="edit/:id" element={<ProductEdit />} />
+              </Route>
 
-          <Route
-            path="/dashboard"
-            element={<Home user={user} loggedIn={loggedIn} />}
-          />
+              <Route
+                path="/dashboard"
+                element={<Home user={user} loggedIn={loggedIn} />}
+              />
+            </>
+          )}
           <Route
             index
             element={<Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}
