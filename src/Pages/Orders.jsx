@@ -32,7 +32,7 @@ export default function Orders() {
         </div>
       </div>
       <div className="d-flex justify-content-between mb-2">
-        <h4>FarmEazy marketplace orders:</h4>
+        <h4>Orders placed on FarmEazy marketplace:</h4>
         <Button size="sm" variant="outline-primary">
           <Link
             to="/orders/add"

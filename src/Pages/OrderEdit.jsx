@@ -135,7 +135,7 @@ export default function OrderEdit() {
               <Button className="me-2" size="sm" variant="outline-danger">
                 <Link
                   style={{ color: "inherit", textDecoration: "none" }}
-                  to={`/order/${id}`}
+                  to={`/orders/${id}`}
                 >
                   Go back
                 </Link>
