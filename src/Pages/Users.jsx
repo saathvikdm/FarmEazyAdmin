@@ -13,7 +13,7 @@ export default function Users() {
     axios
       .get("users")
       .then((res) => {
-        setUsers(res.data.user);
+        setUsers(res.data.user.reverse());
         setLoading(false);
       })
       .catch((err) => console.log(err));

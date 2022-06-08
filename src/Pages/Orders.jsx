@@ -13,7 +13,7 @@ export default function Orders() {
     axios
       .get("order")
       .then((res) => {
-        setOrders(res.data.order);
+        setOrders(res.data.order.reverse());
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -34,7 +34,12 @@ export default function Orders() {
       <div className="d-flex justify-content-between mb-2">
         <h4>FarmEazy marketplace orders:</h4>
         <Button size="sm" variant="outline-primary">
-          List New Order
+          <Link
+            to="/orders/add"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            List New Order
+          </Link>
         </Button>
       </div>
       {loading ? (
