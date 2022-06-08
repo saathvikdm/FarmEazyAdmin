@@ -57,7 +57,7 @@ export default function Product() {
             <Button className="me-2" size="sm" variant="outline-secondary">
               <Link
                 style={{ color: "inherit", textDecoration: "none" }}
-                to={`/product/edit/${id}`}
+                to={`/products/edit/${id}`}
               >
                 Edit product
               </Link>

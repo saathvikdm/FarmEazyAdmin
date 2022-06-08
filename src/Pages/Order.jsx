@@ -57,7 +57,7 @@ export default function Order() {
             <Button className="me-2" size="sm" variant="outline-secondary">
               <Link
                 style={{ color: "inherit", textDecoration: "none" }}
-                to={`/order/edit/${id}`}
+                to={`/orders/edit/${id}`}
               >
                 Edit order
               </Link>

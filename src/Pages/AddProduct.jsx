@@ -62,7 +62,7 @@ export default function AddProduct() {
     axios
       .post(`product/create`, data)
       .then((res) => {
-        navigate(`/product/${res.data.product.id}`, { replace: true });
+        navigate(`/products/${res.data.product.id}`, { replace: true });
       })
       .catch((err) => console.log(err));
   };

@@ -55,7 +55,7 @@ export default function ProductEdit() {
               Products
             </Link>{" "}
             &gt;{" "}
-            <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/products/${id}`} style={{ textDecoration: "none" }}>
               Product Details
             </Link>{" "}
             &gt; Product Edit Page
@@ -134,7 +134,7 @@ export default function ProductEdit() {
               <Button className="me-2" size="sm" variant="outline-danger">
                 <Link
                   style={{ color: "inherit", textDecoration: "none" }}
-                  to={`/product/${id}`}
+                  to={`/products/${id}`}
                 >
                   Go back
                 </Link>

@@ -55,16 +55,6 @@ function App() {
         <Routes>
           {loggedIn && (
             <>
-              <Route path="/order">
-                <Route path=":id" element={<Order />} />
-                <Route path="edit/:id" element={<OrderEdit />} />
-              </Route>
-
-              <Route path="/product">
-                <Route path=":id" element={<Product />} />
-                <Route path="edit/:id" element={<ProductEdit />} />
-              </Route>
-
               <Route path="/users">
                 <Route index element={<Users />} />
                 <Route path=":id" element={<User />} />
@@ -74,12 +64,16 @@ function App() {
 
               <Route path="/orders">
                 <Route index element={<Orders />} />
+                <Route path=":id" element={<Order />} />
                 <Route path="add" element={<AddOrder />} />
+                <Route path="edit/:id" element={<OrderEdit />} />
               </Route>
 
               <Route path="/products">
                 <Route index element={<Products />} />
+                <Route path=":id" element={<Product />} />
                 <Route path="add" element={<AddProduct />} />
+                <Route path="edit/:id" element={<ProductEdit />} />
               </Route>
 
               <Route path="/profile">

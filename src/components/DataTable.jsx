@@ -8,7 +8,7 @@ export default function DataTable({
   data,
   tableColumns,
   dataFields,
-  type = "product",
+  type = "products",
 }) {
   return (
     <Table striped bordered hover>

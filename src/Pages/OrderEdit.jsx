@@ -47,7 +47,7 @@ export default function OrderEdit() {
         console.log(res);
       })
       .catch((err) => console.log(err));
-    navigate(`/order/${id}`, { replace: true });
+    navigate(`/orders/${id}`, { replace: true });
   };
 
   return (
@@ -63,7 +63,7 @@ export default function OrderEdit() {
               Orders
             </Link>{" "}
             &gt;{" "}
-            <Link to={`/order/${id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/orders/${id}`} style={{ textDecoration: "none" }}>
               Order Details
             </Link>{" "}
             &gt; Order Edit Page

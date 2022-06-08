@@ -100,7 +100,7 @@ export default function Home({ user, loggedIn }) {
               tableColumns={OrderDataTableColumns}
               data={orders.slice(0, 5)}
               dataFields={OrderDataFields}
-              type="order"
+              type="orders"
             />
           </div>
         )}

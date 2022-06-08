@@ -49,7 +49,7 @@ export default function Orders() {
           tableColumns={OrderDataTableColumns}
           data={orders}
           dataFields={OrderDataFields}
-          type="order"
+          type="orders"
         />
       )}
     </div>

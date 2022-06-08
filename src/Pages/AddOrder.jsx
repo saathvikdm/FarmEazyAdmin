@@ -60,7 +60,7 @@ export default function AddOrder() {
     axios
       .post(`order/create`, order)
       .then((res) => {
-        navigate(`/order/${res.data.order.id}`, { replace: true });
+        navigate(`/orders/${res.data.order.id}`, { replace: true });
       })
       .catch((err) => console.log(err));
   };
@@ -166,7 +166,7 @@ export default function AddOrder() {
           <Button className="me-2" size="sm" variant="outline-danger">
             <Link
               style={{ color: "inherit", textDecoration: "none" }}
-              to={`/products`}
+              to={`/orders`}
             >
               Go back
             </Link>
