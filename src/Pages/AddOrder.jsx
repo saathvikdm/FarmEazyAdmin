@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function AddProduct() {
+export default function AddOrder() {
   let navigate = useNavigate();
 
   let defaultValues = {
@@ -53,6 +53,22 @@ export default function AddProduct() {
 
   const handleSave = (e) => {
     e.preventDefault();
+    // const form = e.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
+    // } else {
+    //   setValidated(true);
+
+    //   console.log(product);
+
+    //   axios
+    //     .post(`product/create`, product)
+    //     .then((res) => {
+    //       navigate(`/product/${res.data.product.id}`, { replace: true });
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
 
     const data = new FormData();
     for (let key in product) {

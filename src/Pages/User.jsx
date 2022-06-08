@@ -1,8 +1,38 @@
-import React from "react";
+import axios from "axios";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
-export default function Profile({ user }) {
+export default function User() {
+  let navigate = useNavigate();
+
+  let { id } = useParams();
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const userReq = axios.get(`users/${id}`);
+
+    userReq
+      .then((res) => {
+        setUser(res.data.user[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`users/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+    navigate("/users", { replace: true });
+  };
+
   return (
     <div>
       <div className="d-flex">
@@ -11,15 +41,19 @@ export default function Profile({ user }) {
             <Link to="/dashboard" style={{ textDecoration: "none" }}>
               Home
             </Link>{" "}
-            &gt; Profile
+            &gt;{" "}
+            <Link to={`/users`} style={{ textDecoration: "none" }}>
+              Users
+            </Link>{" "}
+            &gt; User Detail
           </p>
           <div className="mt-3">
             <Button className="me-2" size="sm" variant="outline-secondary">
               <Link
                 style={{ color: "inherit", textDecoration: "none" }}
-                to={`/profile/edit`}
+                to={`/users/edit/${id}`}
               >
-                Edit Profile
+                Edit User
               </Link>
             </Button>
           </div>

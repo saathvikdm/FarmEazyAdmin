@@ -76,34 +76,49 @@ export default function Product() {
       {!product ? (
         "loading..."
       ) : (
-        <div className="d-flex flex-column mt-3">
-          <p>
-            Product Name: <b>{product.name}</b>
-          </p>
-          <p>
-            Seller name:{" "}
-            <b>
-              {product.User.firstname} {product.User.lastname}
-            </b>
-          </p>
-          <p>
-            Seller Address: <b>{product.User.address}</b>
-          </p>
-          <p>
-            Available quantity: <b>{product.avl_qty} KG(s)</b>
-          </p>
-          <p>
-            Minimum purchase quantity: <b>{product.min_qty} KG(s)</b>
-          </p>
-          <p>
-            Price: <b>₹{product.price}</b>
-          </p>
-          <p>
-            Product listed on: <b>{product.createdAt}</b>
-          </p>
-          <p>
-            Product updated on: <b>{product.updatedAt}</b>
-          </p>
+        <div className="d-flex mt-3">
+          <div className="col-md-6">
+            <p>
+              Product Name: <b>{product.name}</b>
+            </p>
+            <p>
+              Seller name:{" "}
+              <b>
+                {product.User.firstname} {product.User.lastname}
+              </b>
+            </p>
+            <p>
+              Seller Address: <b>{product.User.address}</b>
+            </p>
+            <p>
+              Available quantity: <b>{product.avl_qty} KG(s)</b>
+            </p>
+            <p>
+              Minimum purchase quantity: <b>{product.min_qty} KG(s)</b>
+            </p>
+            <p>
+              Price: <b>₹{product.price}</b>
+            </p>
+            <p>
+              Product listed on: <b>{product.createdAt}</b>
+            </p>
+            <p>
+              Product updated on: <b>{product.updatedAt}</b>
+            </p>
+          </div>
+          {product.image ? (
+            <div className="col-md-6 d-flex justify-content-center align-items-center flex-column">
+              <p>Product Image</p>
+              <img
+                src={product.image}
+                width="50%"
+                height="auto"
+                alt="product_image"
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </div>
