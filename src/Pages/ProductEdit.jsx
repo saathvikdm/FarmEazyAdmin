@@ -51,6 +51,10 @@ export default function ProductEdit() {
               Home
             </Link>{" "}
             &gt;{" "}
+            <Link to={`/products`} style={{ textDecoration: "none" }}>
+              Products
+            </Link>{" "}
+            &gt;{" "}
             <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
               Product Details
             </Link>{" "}

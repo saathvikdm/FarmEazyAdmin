@@ -59,6 +59,10 @@ export default function OrderEdit() {
               Home
             </Link>{" "}
             &gt;{" "}
+            <Link to={`/orders`} style={{ textDecoration: "none" }}>
+              Orders
+            </Link>{" "}
+            &gt;{" "}
             <Link to={`/order/${id}`} style={{ textDecoration: "none" }}>
               Order Details
             </Link>{" "}

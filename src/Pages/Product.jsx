@@ -30,7 +30,7 @@ export default function Product() {
         console.log(res);
       })
       .catch((err) => console.log(err));
-    navigate("/dashboard", { replace: true });
+    navigate("/products", { replace: true });
   };
 
   return (
@@ -40,6 +40,10 @@ export default function Product() {
           <p>
             <Link to="/dashboard" style={{ textDecoration: "none" }}>
               Home
+            </Link>{" "}
+            &gt;{" "}
+            <Link to={`/products`} style={{ textDecoration: "none" }}>
+              Products
             </Link>{" "}
             &gt; Product Details
           </p>

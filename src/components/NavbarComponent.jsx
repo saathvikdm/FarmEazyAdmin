@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, Navbar, Container } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export default function NavbarComponent({ user, handleLogout, loggedIn }) {
   return (
@@ -20,7 +20,16 @@ export default function NavbarComponent({ user, handleLogout, loggedIn }) {
             <Nav>
               <Navbar.Text>
                 Signed in as:{" "}
-                {user && <b style={{ color: "white" }}>{user.firstname}</b>}
+                {user && (
+                  <b>
+                    <Link
+                      style={{ color: "#0d6efd", textDecoration: "none" }}
+                      to="profile"
+                    >
+                      {user.firstname}
+                    </Link>
+                  </b>
+                )}
               </Navbar.Text>
               &emsp;
               <Nav.Link onClick={handleLogout}>Sign Out</Nav.Link>

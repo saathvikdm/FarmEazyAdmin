@@ -1,9 +1,16 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-export default function DetailCard({ title, count, time }) {
+export default function DetailCard({ title, count, time, path }) {
+  let navigate = useNavigate();
+
   const d = new Date(time.createdAt);
   let dateString = d.toDateString();
+
+  const handleClick = () => {
+    navigate(`/${path}`);
+  };
 
   return (
     <Card
@@ -23,8 +30,11 @@ export default function DetailCard({ title, count, time }) {
                 the bulk of the card's content.
               </Card.Text> */}
       </Card.Body>
-      <Card.Footer>
-        <small className="text-muted">Last updated {dateString}</small>
+      <Card.Footer style={{ textAlign: "right" }}>
+        {/* <small className="text-muted">Last updated {dateString}</small> */}
+        <Button size="sm" variant="outline-secondary" onClick={handleClick}>
+          Manage
+        </Button>
       </Card.Footer>
     </Card>
   );

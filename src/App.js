@@ -8,6 +8,11 @@ import Product from "./Pages/Product";
 import ProductEdit from "./Pages/ProductEdit";
 import Order from "./Pages/Order";
 import OrderEdit from "./Pages/OrderEdit";
+import Orders from "./Pages/Orders";
+import Products from "./Pages/Products";
+import Users from "./Pages/Users";
+import AddProduct from "./Pages/AddProduct";
+import Profile from "./Pages/Profile";
 
 function App() {
   const [user, setUser] = useState();
@@ -54,6 +59,15 @@ function App() {
                 <Route path=":id" element={<Product />} />
                 <Route path="edit/:id" element={<ProductEdit />} />
               </Route>
+
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/products">
+                <Route index element={<Products />} />
+                <Route path="add" element={<AddProduct />} />
+              </Route>
+              <Route path="/users" element={<Users />} />
+
+              <Route path="/profile" element={<Profile />} />
 
               <Route
                 path="/dashboard"

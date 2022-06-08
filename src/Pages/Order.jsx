@@ -41,6 +41,10 @@ export default function Order() {
             <Link to="/dashboard" style={{ textDecoration: "none" }}>
               Home
             </Link>{" "}
+            &gt;{" "}
+            <Link to={`/orders`} style={{ textDecoration: "none" }}>
+              Orders
+            </Link>{" "}
             &gt; Order Details
           </p>
           <h3>ID: {id}</h3>

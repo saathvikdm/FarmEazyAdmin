@@ -17,7 +17,7 @@ export default function DataTable({
           {tableColumns.map((i, idx) => (
             <th>{i}</th>
           ))}
-          <th>Edit</th>
+          <th>View</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +35,7 @@ export default function DataTable({
                     style={{ color: "inherit", textDecoration: "none" }}
                     to={`/${type}/${i.id}`}
                   >
-                    Edit
+                    Details
                   </Link>
                 </Button>
               </td>
