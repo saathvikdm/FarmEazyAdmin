@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function ProfileEdit({ user: userProp }) {
@@ -62,7 +62,9 @@ export default function ProfileEdit({ user: userProp }) {
         </div>
       </div>
       {!userProp && !user ? (
-        "loading..."
+        <div className="my-5">
+          <Spinner animation="grow" />
+        </div>
       ) : (
         <div className="w-50">
           <Form onSubmit={handleSave} encType="multipart/form-data">

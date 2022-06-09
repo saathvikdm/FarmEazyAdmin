@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import _ from "lodash";
 import axios from "axios";
 import DataTable from "../components/DataTable";
 import DetailCard from "../components/DetailCard";
-import { Button } from "react-bootstrap";
 
 import {
   ProductDataFields,
@@ -11,6 +9,7 @@ import {
 } from "../data/ProductData";
 
 import { OrderDataFields, OrderDataTableColumns } from "../data/OrderData";
+import { Spinner } from "react-bootstrap";
 
 export default function Home({ user, loggedIn }) {
   const [users, setUsers] = useState();
@@ -39,14 +38,18 @@ export default function Home({ user, loggedIn }) {
   }, []);
 
   return !user ? (
-    "loading..."
+    <div className="my-5">
+      <Spinner animation="grow" />
+    </div>
   ) : (
     <div>
       <h4>Welcome, {user.firstname}!</h4>
       <div className="mt-3">
         <p className="my-4">Details at a glance:</p>
         {loading && !users && !products && !orders ? (
-          "loading..."
+          <div className="my-5">
+            <Spinner animation="grow" />
+          </div>
         ) : (
           <div className="d-flex flex-column flex-md-row align-items-center align-items-md-start">
             <DetailCard
@@ -70,7 +73,9 @@ export default function Home({ user, loggedIn }) {
           </div>
         )}
         {loading && !products ? (
-          "loading..."
+          <div className="my-5">
+            <Spinner animation="grow" />
+          </div>
         ) : (
           <div className="my-5">
             <div className="d-flex justify-content-between mb-2">
@@ -87,7 +92,9 @@ export default function Home({ user, loggedIn }) {
           </div>
         )}
         {loading && !orders ? (
-          "loading..."
+          <div className="my-5">
+            <Spinner animation="grow" />
+          </div>
         ) : (
           <div className="my-5">
             <div className="d-flex justify-content-between mb-2">

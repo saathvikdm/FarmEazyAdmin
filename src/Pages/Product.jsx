@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
@@ -74,7 +74,9 @@ export default function Product() {
         </div>
       </div>
       {!product ? (
-        "loading..."
+        <div className="my-5">
+          <Spinner animation="grow" />
+        </div>
       ) : (
         <div className="d-flex mt-3">
           <div className="col-md-6">

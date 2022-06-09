@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AddProduct() {
@@ -92,7 +92,9 @@ export default function AddProduct() {
         encType="multipart/form-data"
       >
         {loading ? (
-          "loading..."
+          <div className="my-5">
+            <Spinner animation="grow" />
+          </div>
         ) : (
           <Form.Group className="mb-3">
             <Form.Label>Add product listing on behalf of user: </Form.Label>

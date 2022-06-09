@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AddUser() {
@@ -72,7 +72,9 @@ export default function AddUser() {
       </div>
       <h4>Add new user to FarmEazy marketplace:</h4>
       {!user ? (
-        "loading..."
+        <div className="my-5">
+          <Spinner animation="grow" />
+        </div>
       ) : (
         <div className="w-50">
           <Form onSubmit={handleSave} encType="multipart/form-data">

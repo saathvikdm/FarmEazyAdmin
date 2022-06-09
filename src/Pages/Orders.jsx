@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DataTable from "../components/DataTable";
 import { OrderDataFields, OrderDataTableColumns } from "../data/OrderData";
@@ -43,7 +43,9 @@ export default function Orders() {
         </Button>
       </div>
       {loading ? (
-        "loading..."
+        <div className="my-5">
+          <Spinner animation="grow" />
+        </div>
       ) : (
         <DataTable
           tableColumns={OrderDataTableColumns}

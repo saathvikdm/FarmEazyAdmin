@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
@@ -56,11 +56,21 @@ export default function User() {
                 Edit User
               </Link>
             </Button>
+            <Button
+              className="me-2"
+              size="sm"
+              variant="outline-danger"
+              onClick={(e) => handleDelete(e)}
+            >
+              Delete user
+            </Button>
           </div>
         </div>
       </div>
       {!user ? (
-        "loading..."
+        <div className="my-5">
+          <Spinner animation="grow" />
+        </div>
       ) : (
         <div className="d-flex mt-3">
           <div className="col-md-5">

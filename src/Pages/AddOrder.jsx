@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AddOrder() {
@@ -18,9 +18,6 @@ export default function AddOrder() {
   const [users, setUsers] = useState();
   const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true);
-
-  const [maxQty, setMaxQty] = useState(undefined);
-  const [price, setPrice] = useState(undefined);
 
   useEffect(() => {
     const usersReq = axios.get("users");
@@ -90,7 +87,9 @@ export default function AddOrder() {
         encType="multipart/form-data"
       >
         {loading ? (
-          "loading..."
+          <div className="my-5">
+            <Spinner animation="grow" />
+          </div>
         ) : (
           <Form.Group className="mb-3">
             <Form.Label>Select Product to place order on</Form.Label>
@@ -109,7 +108,9 @@ export default function AddOrder() {
           </Form.Group>
         )}
         {loading ? (
-          "loading..."
+          <div className="my-5">
+            <Spinner animation="grow" />
+          </div>
         ) : (
           <Form.Group className="mb-3">
             <Form.Label>Select buyer placing order on behalf</Form.Label>
@@ -128,9 +129,7 @@ export default function AddOrder() {
           </Form.Group>
         )}
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>
-            Enter order quantity in KG(s) {maxQty && `(Max: ${maxQty} KG)`}
-          </Form.Label>
+          <Form.Label>Enter order quantity in KG(s)</Form.Label>
           <Form.Control
             required
             name="qty"
@@ -140,7 +139,7 @@ export default function AddOrder() {
             placeholder="Enter order quantity in KG(s)"
           />
         </Form.Group>
-        {price && (
+        {/* {price && (
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Buying Price/KG (in ₹)</Form.Label>
             <Form.Control
@@ -152,7 +151,7 @@ export default function AddOrder() {
               placeholder="Buying Price/KG (in ₹)"
             />
           </Form.Group>
-        )}
+        )} */}
         <div className="my-3">
           <Button
             className="me-2"

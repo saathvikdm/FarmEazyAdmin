@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import NavbarComponent from "./components/NavbarComponent";
@@ -20,8 +20,17 @@ import AddOrder from "./Pages/AddOrder";
 import AddUser from "./Pages/AddUser";
 
 function App() {
+  (function () {
+    let token = localStorage.getItem("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = token;
+    } else {
+      axios.defaults.headers.common["Authorization"] = null;
+    }
+  })();
+
   const [user, setUser] = useState();
-  const [userID, setUserId] = useState(localStorage.getItem("userID") || null);
+  const [userID, setUserId] = useState(localStorage.getItem("userID"));
   const [loggedIn, setLoggedIn] = useState(false);
 
   let navigate = useNavigate();
@@ -38,9 +47,9 @@ function App() {
         .get(`users/${userID}`)
         .then((res) => {
           setUser(res.data.user[0]);
-          setLoggedIn(true);
         })
         .catch((err) => console.log(err));
+      setLoggedIn(true);
     }
   }, [userID]);
 
@@ -83,13 +92,21 @@ function App() {
 
               <Route
                 path="/dashboard"
-                element={<Home user={user} loggedIn={loggedIn} />}
+                element={
+                  <Home user={user} loggedIn={loggedIn} userID={userID} />
+                }
               />
             </>
           )}
           <Route
             index
-            element={<Login setLoggedIn={setLoggedIn} loggedIn={loggedIn} />}
+            element={
+              <Login
+                setLoggedIn={setLoggedIn}
+                loggedIn={loggedIn}
+                setUserId={setUserId}
+              />
+            }
           />
         </Routes>
       </div>

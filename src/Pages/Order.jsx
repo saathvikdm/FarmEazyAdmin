@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Order() {
@@ -74,7 +74,9 @@ export default function Order() {
         </div>
       </div>
       {!order ? (
-        "loading..."
+        <div className="my-5">
+          <Spinner animation="grow" />
+        </div>
       ) : (
         <div className="d-flex flex-column mt-3">
           <p>

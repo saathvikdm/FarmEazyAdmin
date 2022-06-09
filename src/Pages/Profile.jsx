@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default function Profile({ user }) {
@@ -26,7 +26,9 @@ export default function Profile({ user }) {
         </div>
       </div>
       {!user ? (
-        "loading..."
+        <div className="my-5">
+          <Spinner animation="grow" />
+        </div>
       ) : (
         <div className="d-flex mt-3">
           <div className="col-md-5">
