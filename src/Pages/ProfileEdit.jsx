@@ -8,8 +8,6 @@ export default function ProfileEdit({ user: userProp }) {
 
   const [user, setUser] = useState(userProp);
 
-  console.log(userProp);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -20,7 +18,6 @@ export default function ProfileEdit({ user: userProp }) {
   };
 
   const handleFileSelect = (e) => {
-    console.log(e.target.files[0]);
     setUser({
       ...user,
       user_image: e.target.files[0],

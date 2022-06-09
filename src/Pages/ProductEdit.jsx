@@ -31,15 +31,29 @@ export default function ProductEdit() {
     });
   };
 
+  const handleFileSelect = (e) => {
+    console.log(e.target.files[0]);
+    setProduct({
+      ...product,
+      image: e.target.files[0],
+    });
+  };
+
   const handleSave = (e) => {
     e.preventDefault();
+
+    const data = new FormData();
+    for (let key in product) {
+      data.append(key, product[key]);
+    }
+
     axios
-      .put(`product/${id}`, product)
+      .put(`product/${id}`, data)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err));
-    navigate(`/product/${id}`, { replace: true });
+    navigate(`/products/${id}`, { replace: true });
   };
 
   return (
@@ -83,7 +97,7 @@ export default function ProductEdit() {
         </div>
       ) : (
         <div className="w-50">
-          <Form>
+          <Form onSubmit={handleSave} encType="multipart/form-data">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Product Name</Form.Label>
               <Form.Control
@@ -124,12 +138,23 @@ export default function ProductEdit() {
                 onChange={handleInputChange}
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Product Image (ignore to retain image)</Form.Label>
+              <Form.Control
+                type="file"
+                placeholder="Enter image address"
+                name="image"
+                // value={product.image}
+                onChange={handleFileSelect}
+              />
+            </Form.Group>
             <div className="my-3">
               <Button
                 className="me-2"
                 size="sm"
                 variant="outline-success"
-                onClick={(e) => handleSave(e)}
+                // onClick={(e) => handleSave(e)}
+                type="submit"
               >
                 Save Changes
               </Button>
