@@ -115,6 +115,16 @@ export default function UserEdit() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
+              <Form.Label>password</Form.Label>
+              <Form.Control
+                name="password"
+                value={user.password}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="Enter Email Address"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
               <Form.Label>Address</Form.Label>
               <Form.Control
                 name="address"

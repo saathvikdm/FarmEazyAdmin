@@ -170,9 +170,9 @@ export default function AddUser() {
                 <option value={null}>Select User</option>
                 <option value={1}>Farmer</option>
                 <option value={2}>User</option>
-                <option value={3}>Renter</option>
+                <option value={3}>Renter/Seller</option>
                 <option value={4}>Admin</option>
-                <option value={5}>Manufacturer</option>
+                {/* <option value={5}>Manufacturer</option> */}
               </Form.Select>
             </Form.Group>
             <div className="my-3">

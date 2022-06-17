@@ -93,10 +93,20 @@ export default function Product() {
               Seller Address: <b>{product.User.address}</b>
             </p>
             <p>
-              Available quantity: <b>{product.avl_qty} KG(s)</b>
+              Available quantity:{" "}
+              <b>
+                {product.type === "Rent"
+                  ? `${product.avl_qty} Hrs`
+                  : `${product.avl_qty} KG`}
+              </b>
             </p>
             <p>
-              Minimum purchase quantity: <b>{product.min_qty} KG(s)</b>
+              Minimum purchase quantity:{" "}
+              <b>
+                {product.type === "Rent"
+                  ? `${product.min_qty} Hrs`
+                  : `${product.min_qty} KG`}
+              </b>
             </p>
             <p>
               Price: <b>₹{product.price}</b>

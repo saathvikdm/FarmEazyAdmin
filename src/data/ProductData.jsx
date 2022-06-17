@@ -4,8 +4,8 @@ export const ProductDataTableColumns = [
   "Seller Name",
   "Type",
   "Price (in ₹)",
-  "Min Qty (KG(s))",
-  "Avl Qty (KG(s))",
+  // "Min Qty",
+  // "Avl Qty",
 ];
 
 export const ProductDataFields = [
@@ -13,6 +13,6 @@ export const ProductDataFields = [
   "firstname",
   "type",
   "price",
-  "min_qty",
-  "avl_qty",
+  // "min_qty",
+  // "avl_qty",
 ];

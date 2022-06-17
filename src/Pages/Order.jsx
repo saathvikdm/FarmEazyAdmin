@@ -101,7 +101,11 @@ export default function Order() {
             Buying price: <b>₹{order.price}</b>
           </p>
           <p>
-            Purchased Quantity: <b>{order.qty} KG(s)</b>
+            {order.Product.type === "Rent" ? `Rented for` : `Purchase Quantity`}{" "}
+            :{" "}
+            <b>
+              {order.qty} {order.Product.type === "Rent" ? `Hr(s)` : `KG`}
+            </b>
           </p>
           <p>
             Total Order Value: <b>₹{order.qty * order.price}</b>

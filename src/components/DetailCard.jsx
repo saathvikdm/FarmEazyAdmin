@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 export default function DetailCard({ title, count, time, path }) {
   let navigate = useNavigate();
 
-  const d = new Date(time.createdAt);
-  let dateString = d.toDateString();
-
   const handleClick = () => {
     navigate(`/${path}`);
   };

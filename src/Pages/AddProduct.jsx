@@ -139,7 +139,9 @@ export default function AddProduct() {
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Available quantity in KG(s)</Form.Label>
+          <Form.Label>
+            Available quantity {product.type === "Rent" ? `in Hr(s)` : `in KG`}
+          </Form.Label>
           <Form.Control
             required
             name="avl_qty"
@@ -150,7 +152,10 @@ export default function AddProduct() {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Minimum purchase quantity in KG(s)</Form.Label>
+          <Form.Label>
+            Minimum purchase quantity{" "}
+            {product.type === "Rent" ? `in Hr(s)` : `in KG`}
+          </Form.Label>
           <Form.Control
             required
             name="min_qty"
@@ -161,7 +166,9 @@ export default function AddProduct() {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Price/KG (in ₹)</Form.Label>
+          <Form.Label>
+            Price/{product.type === "Rent" ? `Hr` : `KG`} (in ₹)
+          </Form.Label>
           <Form.Control
             required
             type="number"

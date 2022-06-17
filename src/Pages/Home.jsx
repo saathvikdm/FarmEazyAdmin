@@ -52,24 +52,42 @@ export default function Home({ user, loggedIn }) {
           </div>
         ) : (
           <div className="d-flex flex-column flex-md-row align-items-center align-items-md-start">
-            <DetailCard
-              title="No. of Users"
-              count={users.length}
-              time={users.at(-1)}
-              path="users"
-            />
-            <DetailCard
-              title="No. of Listed Products"
-              count={products.length}
-              time={products.at(-1)}
-              path="products"
-            />
-            <DetailCard
-              title="No. of Orders"
-              count={orders.length}
-              time={orders.at(-1)}
-              path="orders"
-            />
+            {!users ? (
+              <div className="my-5">
+                <Spinner animation="grow" />
+              </div>
+            ) : (
+              <DetailCard
+                title="No. of Users"
+                count={users.length}
+                time={users.at(-1)}
+                path="users"
+              />
+            )}
+            {!products ? (
+              <div className="my-5">
+                <Spinner animation="grow" />
+              </div>
+            ) : (
+              <DetailCard
+                title="No. of Listed Products"
+                count={products.length}
+                time={products.at(-1)}
+                path="products"
+              />
+            )}
+            {!orders ? (
+              <div className="my-5">
+                <Spinner animation="grow" />
+              </div>
+            ) : (
+              <DetailCard
+                title="No. of Orders"
+                count={orders.length}
+                time={orders.at(-1)}
+                path="orders"
+              />
+            )}
           </div>
         )}
         {loading && !products ? (

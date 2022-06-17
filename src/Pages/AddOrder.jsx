@@ -119,7 +119,7 @@ export default function AddOrder() {
               value={order.UserId}
               onChange={handleInputChange}
             >
-              <option value={null}>Select product type</option>
+              <option value={null}>Select User</option>
               {users.map((user, idx) => (
                 <option value={user.id} key={idx}>
                   {user.firstname} {user.lastname}
@@ -129,14 +129,14 @@ export default function AddOrder() {
           </Form.Group>
         )}
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Enter order quantity in KG(s)</Form.Label>
+          <Form.Label>Enter order quantity</Form.Label>
           <Form.Control
             required
             name="qty"
             value={order.qty}
             onChange={handleInputChange}
             type="number"
-            placeholder="Enter order quantity in KG(s)"
+            placeholder="Enter order quantity"
           />
         </Form.Group>
         {/* {price && (

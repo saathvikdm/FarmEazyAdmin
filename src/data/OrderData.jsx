@@ -4,7 +4,7 @@ export const OrderDataTableColumns = [
   "Seller Name",
   "Buyer Name",
   "Buying Price (in ₹)",
-  "Qty (KG(s))",
+  "Qty",
   "Fullfilled?",
 ];
 

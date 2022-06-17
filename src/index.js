@@ -6,7 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8080/api/";
+// axios.defaults.baseURL = "http://192.168.29.110:8080/api/";
+// axios.defaults.baseURL = "http://localhost:8080/api/";
+axios.defaults.baseURL = "https://api.farmeazy.tech/api/";
 // axios.defaults.headers.common["Authorization"] = localStorage.getItem("token");
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

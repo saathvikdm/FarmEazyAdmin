@@ -86,7 +86,15 @@ export default function OrderEdit() {
                 <br />
                 Price/KG: <b>₹{order.Product.price}</b>
                 <br />
-                Minimum Purchase Quantity: <b>{order.Product.min_qty} KG(s)</b>
+                Minimum{" "}
+                {order.Product.type === "Rent"
+                  ? `Rent duration`
+                  : `Purchase Quantity`}{" "}
+                :{" "}
+                <b>
+                  {order.Product.min_qty}{" "}
+                  {order.Product.type === "Rent" ? `Hr(s)` : `KG`}
+                </b>
               </p>
               <p>
                 Buyer Name:{" "}
@@ -106,7 +114,12 @@ export default function OrderEdit() {
         <div className="w-50">
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Purchase Quantity in KG(s)</Form.Label>
+              <Form.Label>
+                {order.Product.type === "Rent"
+                  ? `Rent for`
+                  : `Purchase Quantity`}{" "}
+                {order.Product.type === "Rent" ? `Hr(s)` : `KG`}
+              </Form.Label>
               <Form.Control
                 name="qty"
                 value={order.qty}

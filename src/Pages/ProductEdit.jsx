@@ -47,13 +47,17 @@ export default function ProductEdit() {
       data.append(key, product[key]);
     }
 
-    axios
-      .put(`product/${id}`, data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-    navigate(`/products/${id}`, { replace: true });
+    for (var pair of data.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+
+    // axios
+    //   .put(`product/${id}`, data)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => console.log(err));
+    // navigate(`/products/${id}`, { replace: true });
   };
 
   return (
@@ -109,7 +113,10 @@ export default function ProductEdit() {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Available quantity in KG(s)</Form.Label>
+              <Form.Label>
+                Available quantity in{" "}
+                {product.type === "Rent" ? `in Hr(s)` : `in KG`}
+              </Form.Label>
               <Form.Control
                 name="avl_qty"
                 value={product.avl_qty}
@@ -119,7 +126,10 @@ export default function ProductEdit() {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Minimum purchase quantity in KG(s)</Form.Label>
+              <Form.Label>
+                Minimum purchase quantity in{" "}
+                {product.type === "Rent" ? `in Hr(s)` : `in KG`}
+              </Form.Label>
               <Form.Control
                 name="min_qty"
                 value={product.min_qty}
