@@ -47,17 +47,17 @@ export default function ProductEdit() {
       data.append(key, product[key]);
     }
 
-    for (var pair of data.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
+    // for (var pair of data.entries()) {
+    //   console.log(pair[0] + ", " + pair[1]);
+    // }
 
-    // axios
-    //   .put(`product/${id}`, data)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => console.log(err));
-    // navigate(`/products/${id}`, { replace: true });
+    axios
+      .put(`product/${id}`, data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+    navigate(`/products/${id}`, { replace: true });
   };
 
   return (

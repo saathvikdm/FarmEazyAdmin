@@ -93,7 +93,9 @@ export default function Product() {
               Seller Address: <b>{product.User.address}</b>
             </p>
             <p>
-              Available quantity:{" "}
+              {product.type === "Rent"
+                ? `Available for:`
+                : `Available quantity:`}{" "}
               <b>
                 {product.type === "Rent"
                   ? `${product.avl_qty} Hrs`
@@ -101,7 +103,9 @@ export default function Product() {
               </b>
             </p>
             <p>
-              Minimum purchase quantity:{" "}
+              {product.type === "Rent"
+                ? `Minimum rent duration:`
+                : `Minimum purchase quantity:`}{" "}
               <b>
                 {product.type === "Rent"
                   ? `${product.min_qty} Hrs`
