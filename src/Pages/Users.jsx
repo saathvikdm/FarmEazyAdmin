@@ -87,7 +87,7 @@ export default function Users() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             type="text"
-            placeholder="Search product"
+            placeholder="Search user"
           />
         </Form.Group>
         <Form.Group className="mb-3">
